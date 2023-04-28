@@ -2,7 +2,7 @@ import { createPage } from './modules/createPage.js';
 // import { keys } from './modules/keysDB.js';
 // import { Button } from './modules/button.js';
 import { renderButtons } from './modules/renderButtons.js';
-// import { setMouseEvents } from './modules/mouseEvent.js';
+import { capsMode, updateCapsMode } from './modules/updateCapsMode.js'
 
 export const { header, textArea, keyboardWrapper } = createPage();
 const rows = keyboardWrapper.querySelectorAll('.keyboard__row');
@@ -23,16 +23,16 @@ function setMouseEvents() {
                 break;
             case 'CapsLock':
                 btn.classList.toggle('active'); ////////////
-                // updateCapsMode();
+                updateCapsMode();
                 break;
             case 'ShiftLeft':
-                // updateCapsMode();
+                updateCapsMode();
                 // switchShiftValue();
 
                 isPressed = true;
                 break;
             case 'ShiftRight':
-                // updateCapsMode();
+                updateCapsMode();
                 // switchShiftValue();
 
                 isPressed = true;
@@ -62,7 +62,7 @@ function setMouseEvents() {
 
         if (btn.innerText === 'Shift') {
             console.log('shift unpress');
-            // updateCapsMode();
+            updateCapsMode();
             // checkLanguage();
             isPressed = false;
         }
