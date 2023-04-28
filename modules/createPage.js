@@ -12,9 +12,7 @@ export function createPage() {
     header.innerText = 'Virtual Keyboard';
     textArea.classList.add('keyboard__display');
     keyboardWrapper.classList.add('keyboard');
-    document.body.insertAdjacentElement('beforeend', header);
-    document.body.insertAdjacentElement('beforeend', textArea);
-    document.body.insertAdjacentElement('beforeend', keyboardWrapper);
+    document.body.append(header, textArea, keyboardWrapper);
 
     return { header, textArea, keyboardWrapper };
 }
