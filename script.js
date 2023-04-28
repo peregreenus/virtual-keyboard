@@ -4,14 +4,17 @@ import { createPage } from './modules/createPage.js';
 import { renderButtons } from './modules/renderButtons.js';
 import { capsMode, updateCapsMode } from './modules/updateCapsMode.js'
 
-export const { header, textArea, keyboardWrapper } = createPage();
+const { header, textArea, keyboardWrapper } = createPage();
 const rows = keyboardWrapper.querySelectorAll('.keyboard__row');
-export const KEYS = renderButtons(rows);
-export const btns = keyboardWrapper.querySelectorAll('.keyboard__key');
+const KEYS = renderButtons(rows);
+const btns = keyboardWrapper.querySelectorAll('.keyboard__key');
 
-export let isPressed = false;
+let isPressed = false;
 
 setMouseEvents();
+setKeyboardEvents();
+
+export { header, textArea, keyboardWrapper, KEYS, btns, isPressed };
 
 function setMouseEvents() {
     btns.forEach((btn, i) => btn.addEventListener('mousedown', (e) => {
@@ -67,4 +70,73 @@ function setMouseEvents() {
             isPressed = false;
         }
     }));
+}
+
+function setKeyboardEvents() {
+    document.addEventListener('keydown', (e) => {
+        e.preventDefault();
+
+        btns.forEach(btn => {
+            if (btn.classList.contains(e.code)) {
+                if (btn.innerText !== 'CapsLock') {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.toggle('active');
+                }
+
+
+                if (e.key.length === 1) {
+                    if (capsMode) {
+                        textArea.innerHTML += btn.innerText.toUpperCase();
+                    } else {
+                        textArea.innerHTML += btn.innerText;
+                    }
+                }
+                if (e.code === 'ArrowLeft' || e.code === 'ArrowUp' || e.code === 'ArrowDown' || e.code === 'ArrowRight') {
+                    textArea.innerHTML += btn.innerText;
+                }
+            }
+        });
+        console.log(e.key); ///////////////////
+
+        if (e.code === 'CapsLock') {
+            updateCapsMode();
+        }
+        if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
+            if (!isPressed) {
+                updateCapsMode(); ////
+                // switchShiftValue();
+
+                isPressed = true;
+            }
+        }
+        if (e.ctrlKey && e.code === 'AltLeft') {
+            // setLanguage();
+        }
+        if (e.code === 'Backspace') {
+            textArea.innerHTML = textArea.innerHTML.substring(0, textArea.innerHTML.length - 1);
+        }
+        if (e.code === 'Space') {
+            textArea.innerHTML += ' ';
+        }
+        if (e.code === 'Enter') {
+            textArea.innerHTML += '\n';
+        }
+        if (e.code === 'Tab') {
+            textArea.innerHTML += '    ';
+        }
+    });
+
+    document.addEventListener('keyup', (e) => {
+        btns.forEach(btn => {
+            if (btn.innerText !== 'CapsLock') btn.classList.remove('active');
+        });
+
+        if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
+            console.log('shift unpress');
+            isPressed = false;
+            updateCapsMode();
+            // checkLanguage();
+        }
+    });
 }
