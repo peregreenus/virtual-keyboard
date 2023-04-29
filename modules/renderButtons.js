@@ -1,7 +1,7 @@
 import { keys } from './keysDB.js';
 import { Button } from './button.js';
 
-export function renderButtons(target) {
+function renderButtons(target) {
     const KEYS = [];
 
     for (let i = 0; i < keys.length; i++) {
@@ -17,3 +17,5 @@ export function renderButtons(target) {
 
     return KEYS;
 }
+
+export { renderButtons };

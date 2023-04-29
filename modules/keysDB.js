@@ -1,4 +1,4 @@
-export const keys = [
+const keys = [
     {
         name: 'Backquote',
         value: '`',
@@ -448,3 +448,5 @@ export const keys = [
         rusShiftValue: 'Ctrl'
     },
 ];
+
+export { keys };

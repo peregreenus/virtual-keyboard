@@ -1,4 +1,4 @@
-export class Button {
+class Button {
     constructor(name, value, shiftValue, rusValue, rusShiftValue) {
         this.name = name;
         this.value = value;
@@ -15,3 +15,5 @@ export class Button {
         }
     }
 }
+
+export { Button };

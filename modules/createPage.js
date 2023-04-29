@@ -1,4 +1,4 @@
-export function createPage() {
+function createPage() {
     const header = document.createElement('h1');
     const textArea = document.createElement('textarea');
     const keyboardWrapper = document.createElement('div');
@@ -16,3 +16,5 @@ export function createPage() {
 
     return { header, textArea, keyboardWrapper };
 }
+
+export { createPage };
