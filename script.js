@@ -6,6 +6,7 @@ import { capsMode, updateCapsMode } from './modules/updateCapsMode.js';
 // import { changeShiftValue } from './modules/changeShiftValue.js';
 import { setLanguage } from './modules/setLanguage.js';
 import { checkLanguage } from './modules/checkLanguage.js';
+import { switchShiftValue } from './modules/switchShiftValue.js';
 
 const { header, textArea, keyboardWrapper } = createPage();
 const rows = keyboardWrapper.querySelectorAll('.keyboard__row');
@@ -14,6 +15,7 @@ const btns = keyboardWrapper.querySelectorAll('.keyboard__key');
 
 let isPressed = false;
 
+checkLanguage();
 setMouseEvents();
 setKeyboardEvents();
 
@@ -33,13 +35,13 @@ function setMouseEvents() {
                 break;
             case 'ShiftLeft':
                 updateCapsMode();
-                // switchShiftValue();
+                switchShiftValue();
 
                 isPressed = true;
                 break;
             case 'ShiftRight':
                 updateCapsMode();
-                // switchShiftValue();
+                switchShiftValue();
 
                 isPressed = true;
                 break;
@@ -108,7 +110,7 @@ function setKeyboardEvents() {
         if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
             if (!isPressed) {
                 updateCapsMode(); ////
-                // switchShiftValue();
+                switchShiftValue();
 
                 isPressed = true;
             }
