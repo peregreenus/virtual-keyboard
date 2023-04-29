@@ -1,7 +1,6 @@
 import { btns, KEYS, textArea } from '../script.js';
 import { updateCapsMode } from './updateCapsMode.js';
 import { switchShiftValue } from './switchShiftValue.js';
-import { capsMode } from './updateCapsMode.js';
 import { checkLanguage } from './checkLanguage.js';
 import { setLanguage } from './setLanguage.js';
 
@@ -17,7 +16,7 @@ function setEvents() {
                     textArea.innerHTML += '    ';
                     break;
                 case 'CapsLock':
-                    btn.classList.toggle('active'); ////////////
+                    btn.classList.toggle('active');
                     updateCapsMode();
                     break;
                 case 'ShiftLeft':
@@ -78,25 +77,20 @@ function setEvents() {
 
 
                     if (e.key.length === 1) {
-                        if (capsMode) {
-                            textArea.innerHTML += btn.innerText.toUpperCase();
-                        } else {
-                            textArea.innerHTML += btn.innerText;
-                        }
+                        textArea.innerHTML += btn.innerText;
                     }
                     if (e.code === 'ArrowLeft' || e.code === 'ArrowUp' || e.code === 'ArrowDown' || e.code === 'ArrowRight') {
                         textArea.innerHTML += btn.innerText;
                     }
                 }
             });
-            console.log(e.key); ///////////////////
 
             if (e.code === 'CapsLock') {
                 updateCapsMode();
             }
             if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
                 if (!isPressed) {
-                    updateCapsMode(); ////
+                    updateCapsMode();
                     switchShiftValue();
 
                     isPressed = true;
