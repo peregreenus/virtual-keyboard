@@ -5,6 +5,7 @@ import { renderButtons } from './modules/renderButtons.js';
 import { capsMode, updateCapsMode } from './modules/updateCapsMode.js';
 // import { changeShiftValue } from './modules/changeShiftValue.js';
 import { setLanguage } from './modules/setLanguage.js';
+import { checkLanguage } from './modules/checkLanguage.js';
 
 const { header, textArea, keyboardWrapper } = createPage();
 const rows = keyboardWrapper.querySelectorAll('.keyboard__row');
@@ -68,7 +69,7 @@ function setMouseEvents() {
         if (btn.innerText === 'Shift') {
             console.log('shift unpress');
             updateCapsMode();
-            // checkLanguage();
+            checkLanguage();
             isPressed = false;
         }
     }));
@@ -138,7 +139,7 @@ function setKeyboardEvents() {
             console.log('shift unpress');
             isPressed = false;
             updateCapsMode();
-            // checkLanguage();
+            checkLanguage();
         }
     });
 }

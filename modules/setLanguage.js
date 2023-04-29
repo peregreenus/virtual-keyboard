@@ -14,4 +14,4 @@ function setLanguage() {
     sessionStorage.setItem('lang', lang);
 }
 
-export { setLanguage };
+export { lang, setLanguage };
