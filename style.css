@@ -43,6 +43,7 @@ body {
 
 .keyboard__display::placeholder {
     color: #ffffff;
+    font-size: 1.3rem;
 }
 
 .keyboard__key {

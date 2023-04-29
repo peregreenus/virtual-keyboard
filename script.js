@@ -7,7 +7,9 @@ const { header, textArea, keyboardWrapper } = createPage();
 const rows = keyboardWrapper.querySelectorAll('.keyboard__row');
 const KEYS = renderButtons(rows);
 const btns = keyboardWrapper.querySelectorAll('.keyboard__key');
+const placeholderText = `Разработано в ОС Windows\nДля смены языка нажмите CtrlLeft + AltLeft`;
 
+textArea.placeholder = placeholderText;
 checkLanguage();
 setEvents();
 
