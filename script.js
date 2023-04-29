@@ -2,7 +2,9 @@ import { createPage } from './modules/createPage.js';
 // import { keys } from './modules/keysDB.js';
 // import { Button } from './modules/button.js';
 import { renderButtons } from './modules/renderButtons.js';
-import { capsMode, updateCapsMode } from './modules/updateCapsMode.js'
+import { capsMode, updateCapsMode } from './modules/updateCapsMode.js';
+// import { changeShiftValue } from './modules/changeShiftValue.js';
+import { setLanguage } from './modules/setLanguage.js';
 
 const { header, textArea, keyboardWrapper } = createPage();
 const rows = keyboardWrapper.querySelectorAll('.keyboard__row');
@@ -111,7 +113,7 @@ function setKeyboardEvents() {
             }
         }
         if (e.ctrlKey && e.code === 'AltLeft') {
-            // setLanguage();
+            setLanguage();
         }
         if (e.code === 'Backspace') {
             textArea.innerHTML = textArea.innerHTML.substring(0, textArea.innerHTML.length - 1);
