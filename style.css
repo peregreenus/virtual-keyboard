@@ -126,4 +126,5 @@ body {
 .active {
     box-shadow: -3px -3px 7px #585858 inset, 3px 3px 5px #202020 inset;
     color: #967f1b;
+    background: #f5f5f80c;
 }
