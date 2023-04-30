@@ -20,8 +20,6 @@ function updateCapsMode() {
 
         capsMode = false;
     }
-
-    console.log(capsMode);
 }
 
 export { capsMode, updateCapsMode };

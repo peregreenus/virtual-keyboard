@@ -38,7 +38,7 @@ function setEvents() {
                     textArea.innerHTML = '' + textArea.innerHTML.substring(0, textArea.innerHTML.length - 1);
                     break;
                 case 'Delete':
-                    // textArea.innerHTML += ' ';
+
                     break;
                 case 'Enter':
                     textArea.innerHTML += '\n';
@@ -55,7 +55,6 @@ function setEvents() {
             if (btn.innerText !== 'CapsLock') btn.classList.remove('active');
 
             if (btn.innerText === 'Shift') {
-                console.log('shift unpress');
                 updateCapsMode();
                 checkLanguage();
                 isPressed = false;
@@ -119,7 +118,6 @@ function setEvents() {
             });
 
             if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
-                console.log('shift unpress');
                 isPressed = false;
                 updateCapsMode();
                 checkLanguage();
